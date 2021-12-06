@@ -76,7 +76,7 @@ describe("caesar shift submission tests written by Jason Deville", () => {
   });
 
   describe("When decoding a message", () => {
-    it("should decode a message by shifting the letters in the opposite direction", () => {
+    it("Decodes the message by shifting the opposite direction", () => {
       const message = "wvssf";
       const shift = 7;
       const actual = caesar(message, shift, false);
@@ -85,7 +85,7 @@ describe("caesar shift submission tests written by Jason Deville", () => {
       expect(actual).to.equal(expected);
     });
 
-    it("should leaves spaces and other symbols as is", () => {
+    it("Should ignore spaces and special characters", () => {
       const message = "hizmp wxev*$";
       const shift = 4;
       const actual = caesar(message, shift, false);
@@ -94,7 +94,7 @@ describe("caesar shift submission tests written by Jason Deville", () => {
       expect(actual).to.equal(expected);
     });
 
-    it("ignore capital letters", () => {
+    it("Should ignore capital letters", () => {
       const message = "jkkh fjutna";
       const shift = 9;
       const actual = caesar(message, shift, false);
@@ -103,7 +103,7 @@ describe("caesar shift submission tests written by Jason Deville", () => {
       expect(actual).to.equal(expected);
     });
 
-    it("Should wrap to the beginning of the alphabet if it goes past the end of the alphabet", () => {
+    it("Should wrap back to the beginning of the alphabet if it goes past the end, and vice versa if it goes past the beginning", () => {
       const message = "shwwb";
       const shift = 3;
       const actual = caesar(message, shift, false);
