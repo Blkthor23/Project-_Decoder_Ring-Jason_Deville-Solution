@@ -1,60 +1,60 @@
 const { expect } = require("chai");
 const { polybius } = require("../src/polybius");
 
-describe("polybius() submission tests written by Thinkful", () => {
-  describe("encoding a message", () => {
-    it("should encode a message by translating each letter to number pairs", () => {
-      const message = "message";
+describe("polybius test written by Jason Deville", () => {
+  describe("When encoding a message", () => {
+    it("When set to encode, should translate each letter to number pair", () => {
+      const message = "hello grader";
       const actual = polybius(message);
-      const expected = "23513434112251";
+      const expected = "3251131343 222411415124";
 
       expect(actual).to.equal(expected);
     });
 
     it("should translate both 'i' and 'j' to 42", () => {
-      const message = "jiggle";
+      const message = "jason jin";
       const actual = polybius(message);
-      const expected = "424222221351";
+      const expected = "4211344333 424233";
 
       expect(actual).to.equal(expected);
     });
 
-    it("should leave spaces as is", () => {
-      const message = "my message";
+    it("Spaces should not affect the encoding", () => {
+      const message = "spaces do not affect me";
       const actual = polybius(message);
-      const expected = "2345 23513434112251";
+      const expected = "345311315134 4143 334344 111212513144 2351";
 
       expect(actual).to.equal(expected);
     });
   });
 
-  describe("decoding a message", () => {
+  describe("When decoding a message", () => {
     it("should decode a message by translating each pair of numbers into a letter", () => {
-      const message = "23513434112251";
+      const message = "3251131343 222411415124";
       const actual = polybius(message, false);
-      const expected = "message";
+      const expected = "hello grader";
 
       expect(actual).to.equal(expected);
     });
 
     it("should translate 42 to both 'i' and 'j'", () => {
-      const message = "424222221351";
+      const message = "4211344333 424233";
       const actual = polybius(message, false);
 
       expect(actual).to.include("i");
       expect(actual).to.include("j");
     });
 
-    it("should leave spaces as is", () => {
-      const message = "2345 23513434112251";
+    it("Spaces should not affect decoding", () => {
+      const message = "345311315134 4143 334344 111212513144 2351";
       const actual = polybius(message, false);
-      const expected = "my message";
+      const expected = "spaces do not affect me";
 
       expect(actual).to.equal(expected);
     });
 
-    it("should return false if the length of all numbers is odd", () => {
-      const message = "2345 235134341122514";
+    it("Should return false if the length isn't even", () => {
+      const message = "32511313434";
       const actual = polybius(message, false);
 
       expect(actual).to.be.false;
